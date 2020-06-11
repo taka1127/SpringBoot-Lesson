@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!-- xmlns:thは「th:で始まるものはThymeleafで定義された属性ですよ」ということを宣言。
+xmlns:thを書かなくてもth:text属性の置き換えは行われる。ただし、IDE（Spring Tool Suite）が
+「th:text属性は定義されていません」という警告を表示するため、それを回避するためにxmlns:thを記述している。 -->
 <head>
 <meta charset="UTF-8">
 <title>Spring入門</title>
 </head>
 <body>
+						<!-- Thymeleaf→差し替えたい箇所のみth:始まりの属性をつける -->
+						<!-- Modelインターフェースにname属性として設定された値に置き換えられる。${属性名} -->
 <p>こんにちは！<span th:text="${name}">お名前</span>さん！
+<p th:text="|こんにちは！${name}さん！|"></p> <!-- これでもOK -->
+<p>こんにちは！[[${name}]]さん！</p> <!-- これでもOK -->
 
 </body>
 </html>
